@@ -49,6 +49,10 @@ public class PlayerMovment : MonoBehaviour
             speed = 6;
         }
 
+        if (isGrounded == false && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 10;
+        }
         
 
         velosity.y += gravity * Time.deltaTime;
