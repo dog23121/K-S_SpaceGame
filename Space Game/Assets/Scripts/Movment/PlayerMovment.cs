@@ -6,9 +6,10 @@ public class PlayerMovment : MonoBehaviour
 {
     public CharacterController controler;
 
-    public float speed = 12f;
+    public float speed = 6f;
     public float gravity = -20f;
     public float jumpHeight = 3f;
+    public float sprintSpeed = 10f;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -38,6 +39,17 @@ public class PlayerMovment : MonoBehaviour
             velosity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded)
+        {
+            speed = sprintSpeed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 6;
+        }
+
+        
 
         velosity.y += gravity * Time.deltaTime;
 
