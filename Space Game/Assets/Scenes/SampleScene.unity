@@ -708,6 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controler: {fileID: 321434388}
+  inventory: {fileID: 1627683187}
   speed: 6
   gravity: -30
   jumpHeight: 3
@@ -1203,8 +1204,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -159.9}
-  m_SizeDelta: {x: -385.9665, y: -335.2627}
+  m_AnchoredPosition: {x: 0, y: -159.90002}
+  m_SizeDelta: {x: -385.96643, y: -335.2627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &676084631
 CanvasRenderer:

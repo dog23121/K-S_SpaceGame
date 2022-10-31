@@ -6,6 +6,8 @@ public class PlayerMovment : MonoBehaviour
 {
     public CharacterController controler;
 
+    public GameObject inventory;
+
     public float speed = 6f;
     public float gravity = -20f;
     public float jumpHeight = 3f;
@@ -18,6 +20,8 @@ public class PlayerMovment : MonoBehaviour
     Vector3 velosity;  
     bool isGrounded;
 
+    bool invOpen = false;
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -27,7 +31,24 @@ public class PlayerMovment : MonoBehaviour
             velosity.y = -2f;
         }
 
-        
+        if (invOpen == false && Input.GetKeyDown(KeyCode.E))
+        {
+            inventory.SetActive(true);
+            invOpen = true;
+            speed = 0;
+        }
+
+        if (invOpen == true && Input.GetKeyDown(KeyCode.E))
+        {
+            inventory.SetActive(false);
+            invOpen = false;
+            speed = 6;
+        }
+
+
+        if (invOpen == false)
+        {
+
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
 
@@ -54,10 +75,11 @@ public class PlayerMovment : MonoBehaviour
             {
                 speed = 10;
             }
+        }
 
             velosity.y += gravity * Time.deltaTime;
 
             controler.Move(velosity * Time.deltaTime);
         
-        }
+    }      
 }
