@@ -27,36 +27,37 @@ public class PlayerMovment : MonoBehaviour
             velosity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        controler.Move(move * speed * Time.deltaTime);
-
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velosity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded)
-        {
-            speed = sprintSpeed;
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            speed = 6;
-        }
-
-        if (isGrounded == false && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            speed = 10;
-        }
         
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        velosity.y += gravity * Time.deltaTime;
+            Vector3 move = transform.right * x + transform.forward * z;
 
-        controler.Move(velosity * Time.deltaTime);
-    }
+            controler.Move(move * speed * Time.deltaTime);
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velosity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded)
+            {
+                speed = sprintSpeed;
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                speed = 6;
+            }
+
+            if (isGrounded == false && Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                speed = 10;
+            }
+
+            velosity.y += gravity * Time.deltaTime;
+
+            controler.Move(velosity * Time.deltaTime);
+        
+        }
 }
