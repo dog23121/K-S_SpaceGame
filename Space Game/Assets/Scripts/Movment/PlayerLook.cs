@@ -10,6 +10,8 @@ public class PlayerLook : MonoBehaviour
 
     float xRotation = 0f;
 
+    bool invOpen = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -19,14 +21,34 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        if (invOpen == false)
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
+        {
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        PlayerBody.Rotate(Vector3.up * mouseX);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+
+            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            PlayerBody.Rotate(Vector3.up * mouseX);
+        }
+    
+            if (invOpen == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }    
+
+            if (invOpen == true && Input.GetKeyDown(KeyCode.Escape))
+        {
+            invOpen = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+            if (invOpen == false && Input.GetKeyDown(KeyCode.E))
+        {
+            invOpen = true;
+        }
     
     }
 }

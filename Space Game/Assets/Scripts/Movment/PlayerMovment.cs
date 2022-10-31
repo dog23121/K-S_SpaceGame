@@ -20,7 +20,7 @@ public class PlayerMovment : MonoBehaviour
     Vector3 velosity;  
     bool isGrounded;
 
-    bool invOpen = false;
+    bool invOpen;
 
     void Update()
     {
@@ -33,16 +33,14 @@ public class PlayerMovment : MonoBehaviour
 
         if (invOpen == false && Input.GetKeyDown(KeyCode.E))
         {
-            inventory.SetActive(true);
             invOpen = true;
-            speed = 0;
+            inventory.SetActive(true);
         }
-
-        if (invOpen == true && Input.GetKeyDown(KeyCode.E))
+ 
+        if (invOpen == true && Input.GetKeyDown(KeyCode.Escape))
         {
-            inventory.SetActive(false);
             invOpen = false;
-            speed = 6;
+            inventory.SetActive(false);
         }
 
 
