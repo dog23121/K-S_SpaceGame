@@ -36,11 +36,12 @@ public class PlayerMovment : MonoBehaviour
             invOpen = true;
             inventory.SetActive(true);
         }
- 
+
         if (invOpen == true && Input.GetKeyDown(KeyCode.Escape))
         {
             invOpen = false;
             inventory.SetActive(false);
+            velosity.y = 0;
         }
 
 
@@ -75,9 +76,9 @@ public class PlayerMovment : MonoBehaviour
             }
         }
 
-            velosity.y += gravity * Time.deltaTime;
+             velosity.y += gravity * Time.deltaTime;
 
-            controler.Move(velosity * Time.deltaTime);
+             controler.Move(velosity * Time.deltaTime);
         
     }      
 }
